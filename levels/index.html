@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl" class=" zctqzzlni idc0_350">
+  <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenges keuzedelen</title>
+<link rel="icon" type="image/x-icon" href="/images/mbo.ico">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="levels.css" />
+<script src="levels.js"></script>
+</head>
+
+
+<body>
+<header class="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02">
+  <!-- logo -->
+  <h1 class="w-3/12">
+      <a href="/">
+          <img src="/images/logo.png" width="250" alt="Logo MBOdigitaal">
+      </a>
+  </h1>
+
+  <!-- navigation -->
+  <nav class="nav font-semibold">
+      <ul class="flex items-center">
+          <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-blue-100 hover:text-blue-500 duration-200 cursor-pointer active">
+              <a href="/keuzedelen/">Keuzedelen</a>
+          </li>
+          <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-blue-100 hover:text-blue-500 duration-200 cursor-pointer">
+              <a href="/levels/index.html">Levels</a>
+          </li>
+      </ul>
+  </nav>
+
+  <!-- Login Button -->
+  <form method="GET" action="/admin/auth/login" class="max-w-sm">
+      <div class="flex items-center py-2">
+          <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 border-4 text-lg text-white py-1 px-6 rounded" type="submit">
+              Login
+          </button>
+      </div>
+  </form>
+
+</header>
+    <!-- Level Buttons -->
+<div class="mt-6 mb-16 w-11/12 p-6 space-y-8 sm:p-8 bg-white mx-auto">
+  <div id="vakken"> 
+    <button id="vaak" onclick="RevealLevels()">
+        <span id="Realiseert Software" class="button_top" onclick="GetSubject(this.id)">Realiseert Software</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Werken in een ontwikkelteam" class="button_top" onclick="GetSubject(this.id)">Werken in een ontwikkelteam</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Generieke onderdelen RE" class="button_top" onclick="GetSubject(this.id)">Generieke onderdelen RE</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Generieke onderdelen BS" class="button_top" onclick="GetSubject(this.id)">Generieke onderdelen BS</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Generieke onderdelen NE" class="button_top" onclick="GetSubject(this.id)">Generieke onderdelen NE</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Generieke onderdelen EN" class="button_top" onclick="GetSubject(this.id)">Generieke onderdelen EN</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Generieke onderdelen LB" class="button_top" onclick="GetSubject(this.id)">Generieke onderdelen LB</span>
+      </button>
+      <button button id="vaak" onclick="RevealLevels()">
+        <span id="Gedrag, Professionaliteit, Persoonlijke ontwikkeling" class="button_top" onclick="GetSubject(this.id)">Gedrag, Professionaliteit, Persoonlijke ontwikkeling</span>
+      </button>
+    </div>
+  
+</div>
+
+<!-- <div class="mt-6 mb-16 w-11/12 p-6 space-y-8 sm:p-8 bg-white mx-auto"></div> -->
+  <div id="levelNumber"> 
+    <button id="number">
+        <span id="0" class="button_top" onclick="GetLevel(this.id)">Level 1</span>
+      </button>
+      <button button id="number">
+        <span id="1" class="button_top" onclick="GetLevel(this.id)">Level 2</span>
+      </button>
+      <button button id="number">
+        <span id="2" class="button_top" onclick="GetLevel(this.id)">Level 3</span>
+      </button>
+      <button button id="number">
+        <span id="3" class="button_top" onclick="GetLevel(this.id)">Level 4</span>
+      </button>
+      <button button id="number">
+        <span id="4" class="button_top" onclick="GetLevel(this.id)">Level 5</span>
+      </button>
+      <button button id="number">
+        <span id="5" class="button_top" onclick="GetLevel(this.id)">Level 6</span>
+      </button>
+      <button button id="number">
+        <span id="6" class="button_top" onclick="GetLevel(this.id)">Level 7</span>
+      </button>
+    </div>
+  
+</div>
+<div id="LvlOutput"></div>
+
+</body>
+<footer class="bg-white rounded-lg m-4"></footer>
+  <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+    <span class="text-sm text-gray-500 sm:text-center">© 2024 <a href="https://vistacollege.nl/" class="hover:underline">Vista College ICT Lyceum</a>
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
+        <li>
+            <a href="/aboutus" class="hover:underline me-4 md:me-6">Over Ons</a>
+        </li>
+        <li>
+            <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+  </div>
+  </footer>
+</html>
