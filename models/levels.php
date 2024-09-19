@@ -72,7 +72,7 @@ class levels
     {
         global $db;
 
-        $sql_selectAll_levels = "SELECT * FROM `levels`";
+        $sql_selectAll_levels = "SELECT * FROM levels ORDER BY level ASC;";
 
         $stmt = $db->prepare($sql_selectAll_levels);
 

@@ -51,6 +51,6 @@ if (!$roles) {
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
-$newUrl = "/admin/roles/update/level.php";
-$title = "Levels";
-require __DOCUMENTROOT__ . '/views/admin/levels/levels.php';
+$newUrl = "/admin/roles/update/";
+$title = "Level Bijwerken";
+require __DOCUMENTROOT__ . '/views/admin/roles/levels.php';
