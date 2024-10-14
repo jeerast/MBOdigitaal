@@ -6,6 +6,8 @@ require_once __DOCUMENTROOT__ . '/database/dbconnection.php';
 require_once __DOCUMENTROOT__ . '/vendor/autoload.php';
 
 use Ramsey\Uuid\Uuid;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class levels
 {
@@ -79,44 +81,46 @@ class levels
         if ($stmt->execute()) {
             $levels = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $levels;
+
         }
+
+
     }
 
-    // update werkt de informatie van een record van een bepaalde id bij.
-    // De functie returneerd true als dit gelukt is en false als het niet
-    // gelukt is.
-    public static function update(
-        $id,
-        $creboNumber,
-        $name,
-        $level,
-        $description,
-        $registerUntil,
-        $graduateUntil
-    ) {
+
+
+
+    public static function updateCurrentLevel($levelValue ,$subjectValue, $descriptionValue)     {
         global $db;
 
-        $sql_update_education_by_id = "UPDATE education
-        SET creboNumber=?, name=?, level=?, description=?, registerUntil=?, graduateUntil=?
-        WHERE id=?";
+        $sql_update_level = "UPDATE `levels` SET `description`='$descriptionValue' WHERE `subject`='$subjectValue' AND `level`='$levelValue';";
+        
+        
 
-        $stmt = $db->prepare($sql_update_education_by_id);
+        $stmt = $db->prepare( $sql_update_level );
 
-        if (
-            $stmt->execute([
-                $creboNumber,
-                $name,
-                $level,
-                $description,
-                $registerUntil == "" ? null : $registerUntil,
-                $graduateUntil == "" ? null : $graduateUntil,
-                $id
-            ])
-        ) {
-            return true;
-        } else {
-            return false;
+        if ($stmt->execute()) {
+            $levelUpdated = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $levelUpdated;
         }
+
+
+    }
+
+    public static function selectCurrentLevel($levelValue ,$subjectValue,)
+    {
+        global $db;
+
+        $sql_select_Current_levels = "SELECT * FROM `levels` WHERE level = '$levelValue' AND subject = '$subjectValue';";
+        
+
+        $stmt = $db->prepare( $sql_select_Current_levels);
+
+        if ($stmt->execute()) {
+            $currentLevel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $currentLevel;
+        }
+
 
     }
 
@@ -129,11 +133,26 @@ class levels
         $sql_delete_education_by_id = "DELETE FROM education WHERE id=?;";
         $stmt = $db->prepare($sql_delete_education_by_id);
         if ($stmt->execute([$id])) {
-            return true;
-
+            
+            return true;                
         } else {
             return false;
         }
     }
 
+    public static function getTokenId()
+    {
+        if (isset($_COOKIE['token'])) {
+
+            $token = $_COOKIE['token'];
+            global $jwtkey;
+            $user_id = JWT::decode($token, new Key($jwtkey, 'HS256'));
+            
+
+            return $user_id->data->id;
+        }
+    }
+
+
+    
 }

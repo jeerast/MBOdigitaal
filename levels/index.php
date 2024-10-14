@@ -24,9 +24,13 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // Hier vinden alle acties plaats die moeten gebeuren om de juiste
 // informatie te bewerken.
 
+require_once __DOCUMENTROOT__ . '/models/levels.php';
+
+$levels = levels::selectAll();
+$user_id = levels::getTokenId();
 
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
-$title = "Challenges Levels";
-require __DOCUMENTROOT__ . '/views/levels/challenges.php';
+$title = "Levels";
+require __DOCUMENTROOT__ . '/views/levels/levels.php';

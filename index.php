@@ -18,7 +18,8 @@ require __DOCUMENTROOT__ . '/errors/default.php';
 // Hier wordt gecontroleerd of de gebruiker is ingelogd en de juiste rechten
 // heeft. De rollen "studenten" en "docenten" hebben toegang.
 // n.v.t. 
-
+require __DOCUMENTROOT__ . '/models/Auth.php';
+$UserRole = Auth::checkRole();
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van form POST
 // en of the variabelen wel bestaan.

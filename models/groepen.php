@@ -7,7 +7,7 @@ require_once __DOCUMENTROOT__ . '/vendor/autoload.php';
 
 use Ramsey\Uuid\Uuid;
 
-class Education
+class groepen
 {
     // insert voegt één nieuwe opleiding toe aan de tabel education.
     // Er wordt een UUIDv4 gegeneert als unieke ID.
@@ -71,53 +71,49 @@ class Education
     public static function selectAll()
     {
         global $db;
+        global $users;
 
-        $sql_selectAll_educations = "SELECT * FROM education ORDER by creboNumber;";
+        $sql_selectAll_users = "SELECT groeps.klas, user.firstName, user.lastName, groepen_desc.groep_desc AS Groep FROM user INNER JOIN groeps ON user.id = groeps.user_id INNER JOIN groepen_desc ON groeps.groep = groepen_desc.id;";
 
-        $stmt = $db->prepare($sql_selectAll_educations);
+        $stmt = $db->prepare($sql_selectAll_users); 
 
         if ($stmt->execute()) {
-            $educations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $educations;
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $users;
         }
-        
     }
 
-    // update werkt de informatie van een record van een bepaalde id bij.
-    // De functie returneerd true als dit gelukt is en false als het niet
-    // gelukt is.
-    public static function update(
-        $id,
-        $creboNumber,
-        $name,
-        $level,
-        $description,
-        $registerUntil,
-        $graduateUntil
-    ) {
+    public static function updateCurrentLevel($levelValue ,$subjectValue, $descriptionValue)     {
         global $db;
 
-        $sql_update_education_by_id = "UPDATE education
-        SET creboNumber=?, name=?, level=?, description=?, registerUntil=?, graduateUntil=?
-        WHERE id=?";
+        $sql_update_level = "UPDATE `levels` SET `description`='$descriptionValue' WHERE `subject`='$subjectValue' AND `level`='$levelValue';";
+        
+        
 
-        $stmt = $db->prepare($sql_update_education_by_id);
+        $stmt = $db->prepare( $sql_update_level );
 
-        if (
-            $stmt->execute([
-                $creboNumber,
-                $name,
-                $level,
-                $description,
-                $registerUntil == "" ? null : $registerUntil,
-                $graduateUntil == "" ? null : $graduateUntil,
-                $id
-            ])
-        ) {
-            return true;
-        } else {
-            return false;
+        if ($stmt->execute()) {
+            $levelUpdated = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $levelUpdated;
         }
+
+
+    }
+
+    public static function selectCurrentLevel($levelValue ,$subjectValue,)
+    {
+        global $db;
+
+        $sql_select_Current_levels = "SELECT * FROM `levels` WHERE level = '$levelValue' AND subject = '$subjectValue';";
+        
+
+        $stmt = $db->prepare( $sql_select_Current_levels);
+
+        if ($stmt->execute()) {
+            $currentLevel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $currentLevel;
+        }
+
 
     }
 
@@ -130,11 +126,13 @@ class Education
         $sql_delete_education_by_id = "DELETE FROM education WHERE id=?;";
         $stmt = $db->prepare($sql_delete_education_by_id);
         if ($stmt->execute([$id])) {
+            
             return true;
-
         } else {
             return false;
         }
     }
 
+
+    
 }

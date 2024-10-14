@@ -13,6 +13,22 @@ use Firebase\JWT\Key;
 
 class Auth
 {
+
+    public static function checkRole()
+    {
+        if (isset($_COOKIE['token'])) {
+
+            $token = $_COOKIE['token'];
+            global $jwtkey;
+            $decoded = JWT::decode($token, new Key($jwtkey, 'HS256'));
+        
+            $role = null;
+            // get role name
+            $tokenRole = $decoded->data->roleName;
+            return $tokenRole;
+        }
+    }
+
     // login controleert de gebruikersnaam (emailadres) en het wachtwoord (secret)
     // die de gebruiker heeft ingevuld in het formulier.
     // login maakt ook een cookie aan. Cookie is 1 uur geldig.
@@ -146,6 +162,7 @@ class Auth
             $token = $_COOKIE['token'];
             global $jwtkey;
             $decoded = JWT::decode($token, new Key($jwtkey, 'HS256'));
+            
 
             return $decoded->data->id;
         }

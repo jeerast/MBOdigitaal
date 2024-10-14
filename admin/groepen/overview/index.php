@@ -34,9 +34,9 @@ require_once __DOCUMENTROOT__ . '/models/Roles.php';
 
 $roles = Role::selectAll();
 
-require_once __DOCUMENTROOT__ . '/models/levels.php';
+require_once __DOCUMENTROOT__ . '/models/groepen.php';
 
-$levels = levels::selectAll();
+$users = groepen::selectAll();
 
 // Controleren of het gelukt is om een rol toe te voegen aan de database.
 if (!$roles) {
@@ -52,5 +52,5 @@ if (!$roles) {
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
 $newUrl = "/admin/roles/update/level.php";
-$title = "Overzicht Levels";
-require __DOCUMENTROOT__ . '/views/admin/levels/levels.php';
+$title = "Overzicht Groepen";
+require __DOCUMENTROOT__ . '/views/admin/groepen/groepen.php';

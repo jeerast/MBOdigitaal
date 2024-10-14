@@ -2,7 +2,27 @@
 <html lang="nl">
 
 <head>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . '/views/templates/head.php' ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . '/views/templates/head.php' ;
+
+        if (empty($_GET['variable1'])) {
+            $subject="";
+            $desc="";
+            $levelNummer="";
+
+
+        } else{
+            $subject=$_GET['variable2'];
+            $desc=$_GET['variable3'];
+            $levelNummer=$_GET['variable1'];
+
+  
+        }
+    // echo "<script>console.log('" . json_encode($levelNummer) . "');</script>";
+    // echo "<script>console.log('" . json_encode($subject) . "');</script>";
+    // echo "<script>console.log('" . json_encode($desc) . "');</script>";
+
+
+    ?>
 </head>
 
 <body class="bg-stone-950">
@@ -14,7 +34,7 @@
             <h3 class="text-lg font-bold text-stone-100 text-white mb-2">Level Bijwerken</h3>
             <p class="mb-2"></p>
             <br>
-            <form method="POST" action="<?php echo $actionUrl ?>" class="w-full">
+            <form method="POST" action="level.php" class="w-full">
                 <input type="hidden" name="id" value="<?php echo isset($idValue) ? $idValue : "" ?>">
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
@@ -27,8 +47,8 @@
                             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                             id="name" 
                             name="name" 
-                            type="text" 
-                            value="<?php echo isset( $nameValue ) ? $nameValue : "" ?>">
+                            type="text"
+                            value="<?php echo strval( $subject )  ;?>">
                     </div>
                 </div>
                 <div class="md:flex md:items-center mb-6">
@@ -44,8 +64,8 @@
                             name="level" 
                             type="Number" 
                             min="1" 
-                            max="7" 
-                            value="<?php echo isset( $levelValue ) ? $levelValue : "" ?>">
+                            max="7"
+                            value=<?php echo $levelNummer ;?>>
                     </div>
                 </div>
                 <div class="md:flex md:items-center mb-6">
@@ -55,31 +75,19 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input
+                        <textarea rows="5" cols="60" name="description"
                             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                            id="name" 
-                            name="name" 
-                            type="text" 
-                            value=" >">
+                            placeholder=""><?php echo strval($desc) ;?></textarea>
                     </div>
                 </div>
                 <div class="md:flex md:items-center">
                     <div class="md:w-1/3"></div>
                     <div class="md:w-2/3">
-                                <?php  
-                                    function foo() {
-                                        // $a = 0;
-                                        // // True because $a is set
-                                        // if (isset($a)) {
-                                        //   echo "$descriptionValue";
-                                        // }
-                                    }
-                                ?>
-                        <button
+                        <input
                             class="shadow bg-stone-700 hover:bg-stone-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                             type="submit"
-                            onclick="alert('<?php foo() ?>')">Bijwerken
-                        </button>
+                            value="Bijwerken">
+                            </input>
                         <button
                             class="shadow bg-stone-700 hover:bg-stone-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                             type="reset"

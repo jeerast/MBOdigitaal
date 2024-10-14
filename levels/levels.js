@@ -10,13 +10,12 @@ function RevealLevels(){
 function GetSubject(clicked_id)
 {
     Subject = clicked_id;
-    alert(clicked_id);
+
 }
 
 
 function GetLevel(clicked_id)
 {
-    alert(clicked_id);
     Level = clicked_id;
     fetch('levels.json')
     .then((response) => response.json())

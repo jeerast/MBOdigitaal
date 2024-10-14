@@ -27,6 +27,32 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Message afkomst van andere pagina.
+    if(isset($_POST["name"])) {
+        $descriptionValue = htmlspecialchars($_POST["description"]);
+        $levelValue = htmlspecialchars($_POST["level"]);
+        $subjectValue = htmlspecialchars($_POST["name"]);
+
+
+        if($descriptionValue === ""){
+            echo'<script>alert("Vul alstublieft alle velden in")</script>';
+        } else {
+                require_once __DOCUMENTROOT__ . '/models/levels.php';
+
+                $selectCurrentLevel = levels::selectCurrentLevel(levelValue: $levelValue ,subjectValue:  $subjectValue);
+                $updatetCurrentLevel = levels::updateCurrentLevel(levelValue: $levelValue ,subjectValue:  $subjectValue, descriptionValue: $descriptionValue);
+                echo "<script>console.log('" . json_encode($selectCurrentLevel) . "');</script>";
+                echo "<script>console.log('" . json_encode($updatetCurrentLevel) . "');</script>";
+
+
+
+        }
+
+    }
+}
+
 // 3. CONTROLLER FUNCTIES
 // Hier vinden alle acties plaats die moeten gebeuren om de juiste
 // informatie te bewerken.
@@ -34,9 +60,6 @@ require_once __DOCUMENTROOT__ . '/models/Roles.php';
 
 $roles = Role::selectAll();
 
-require_once __DOCUMENTROOT__ . '/models/levels.php';
-
-$levels = levels::selectAll();
 
 // Controleren of het gelukt is om een rol toe te voegen aan de database.
 if (!$roles) {
@@ -52,5 +75,5 @@ if (!$roles) {
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
 $newUrl = "/admin/roles/update/";
-$title = "Level Bijwerken";
+$title = "Level's Bijwerken";
 require __DOCUMENTROOT__ . '/views/admin/roles/levels.php';
