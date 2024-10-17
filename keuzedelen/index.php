@@ -18,7 +18,8 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van een link (GET).
 // Op dit moment hier niet van toepassing.
-
+require __DOCUMENTROOT__ . '/models/Auth.php';
+$UserRole = Auth::checkRole();
 
 // 3. CONTROLLER FUNCTIES
 // Hier vinden alle acties plaats die moeten gebeuren om de juiste

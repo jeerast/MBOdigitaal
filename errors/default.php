@@ -8,7 +8,7 @@ function callErrorPage($errorMessage)
 
 function callLoginPage($errorMessage)
 {
-    $urlLoginPage = "/admin/auth/login?message=$errorMessage";
+    $urlLoginPage = "/auth/userlogin?message=$errorMessage";
     header('Location: ' . $urlLoginPage, true);
     exit();
 }

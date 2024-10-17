@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <?php require '../views/templates/menu.php' ?>
+<?php require '../views/templates/' . $UserRole . 'menu.php' ?>
 
     <div class="mt-6 mb-16 w-11/12 p-6 space-y-8 sm:p-8 bg-white mx-auto">
 

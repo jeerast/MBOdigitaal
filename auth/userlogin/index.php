@@ -65,7 +65,7 @@ if ($result) {
 // 4. VIEWS OPHALEN (REDIRECT)
 // Er wordt hier een redirect gedaan naar het overzicht van alle gebruikers.
 // Het bericht de gebruiker is toegevoegd wordt meegestuurd als variabele.
-$url = "/admin/users/overview/?message=$message";
+$url = "/?message=$message";
 header('Location: ' . $url, true);
 exit();
 

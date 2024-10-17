@@ -6,7 +6,8 @@
 </head>
 
 <body>
-    <?php require '../views/templates/menu.php' ?>
+<?php require '../views/templates/' . $UserRole . 'menu.php' ?>
+
 
     
 
@@ -42,7 +43,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    echo "<script>console.log('".$user_id."');</script>";
+                    echo "<script>console.log('".$userRole."');</script>";
                     foreach ($levels as $level) {
                         ?>
                         <tr class="even:bg-slate-200 text-black odd:bg-slate-300 rounded-md">

@@ -27,7 +27,10 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 require_once __DOCUMENTROOT__ . '/models/levels.php';
 
 $levels = levels::selectAll();
-$user_id = levels::getTokenId();
+
+require_once __DOCUMENTROOT__ . '/models/Auth.php';
+
+$UserRole = Auth::checkRole();
 
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.

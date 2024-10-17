@@ -46,6 +46,7 @@ class Auth
         if ($stmt->execute([$email])) {
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $user = $users[0];
+            
 
             if (!$user) {
                 callLoginPage("Er is geen gebruiker gevonden met dit emailadres.");
@@ -120,6 +121,7 @@ class Auth
             foreach ($rolesOrIds as $role) {
                 if (strtolower($tokenRole) === strtolower($role)) {
                     $tokenIsValid = true;
+
                 }
             }
 
