@@ -18,7 +18,7 @@
                     <a href="/levels/">Levels</a>
                 </li>
                 <li
-                    class="p-4 border-b-2 border-green-500 border-opacity-0 cursor-pointer">
+                    class="p-4 border-b-2 border-green-500 border-opacity-0 cursor-not-allowed">
                     <a>Hoi,<?php echo $user_id[0]['firstName'];  ?></a>
 
                 </li>
