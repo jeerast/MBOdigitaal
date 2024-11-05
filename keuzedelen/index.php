@@ -20,6 +20,8 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // Op dit moment hier niet van toepassing.
 require __DOCUMENTROOT__ . '/models/Auth.php';
 $UserRole = Auth::checkRole();
+$user_id = Auth::getIdName();
+
 
 // 3. CONTROLLER FUNCTIES
 // Hier vinden alle acties plaats die moeten gebeuren om de juiste

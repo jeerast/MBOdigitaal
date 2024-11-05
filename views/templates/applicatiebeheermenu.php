@@ -15,17 +15,12 @@
                 </li>
                 <li
                     class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-blue-100 hover:text-blue-500 duration-200 cursor-pointer">
-                    <a href="/levels/">Levels</a>
-                </li>
-                <li
-                    class="p-4 border-b-2 border-green-500 border-opacity-0 cursor-pointer">
-                    <a>Hoi,<?php echo $user_id[0]['firstName'];  ?></a>
-
+                    <a href="/levels/index.php">Levels</a>
                 </li>
             </ul>
         </nav>
 
-        <!-- Logout Button -->
+        <!-- Login Button -->
         <form method="GET" action="../auth/userlogout/userlogout.php" class="max-w-sm">
             <div class="flex items-center py-2">
             <button

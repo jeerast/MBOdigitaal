@@ -17,7 +17,6 @@
                 <a href="/">
                 <button class="text-gray-500 hover:text-gray-700">&times;</button>
                 </a>
-                <!-- <button class="text-gray-500 hover:text-gray-700" onclick="toggleModal('loginModal')">&times;</button> -->
             </div>
 
             <div class="m-2 font-bold text-red-400">

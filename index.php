@@ -21,6 +21,7 @@ require __DOCUMENTROOT__ . '/errors/default.php';
 
 require __DOCUMENTROOT__ . '/models/Auth.php';
 $UserRole = Auth::checkRole();
+$user_id = Auth::getIdName();
 
 
 // 2. INPUT CONTROLEREN

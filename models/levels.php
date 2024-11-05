@@ -107,6 +107,115 @@ class levels
 
     }
 
+    public static function Level_1()     {
+
+            global $db;
+
+            $sql_level_1 =    "SELECT * FROM `levels` WHERE level = '1'";
+
+            $stmt = $db->prepare( $sql_level_1 );
+    
+            if ($stmt->execute()) {
+                $level_1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $level_1;
+            }
+
+
+    }
+
+    public static function Level_2()     {
+
+        global $db;
+
+        $sql_level_2 =    "SELECT * FROM `levels` WHERE level = '2'";
+
+        $stmt = $db->prepare( $sql_level_2 );
+
+        if ($stmt->execute()) {
+            $level_2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_2;
+        }
+
+
+    }
+
+    public static function Level_3()     {
+
+        global $db;
+
+        $sql_level_3 =    "SELECT * FROM `levels` WHERE level = '3'";
+
+        $stmt = $db->prepare( $sql_level_3 );
+
+        if ($stmt->execute()) {
+            $level_3 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_3;
+        }
+
+    }
+
+    public static function Level_4()     {
+
+        global $db;
+
+        $sql_level_4 =    "SELECT * FROM `levels` WHERE level = '4'";
+
+        $stmt = $db->prepare( $sql_level_4 );
+
+        if ($stmt->execute()) {
+            $level_4 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_4;
+        }
+
+    }
+
+    public static function Level_5()     {
+
+        global $db;
+
+        $sql_level_5 =    "SELECT * FROM `levels` WHERE level = '5'";
+
+        $stmt = $db->prepare( $sql_level_5 );
+
+        if ($stmt->execute()) {
+            $level_5 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_5;
+        }
+
+
+    }
+
+    public static function Level_6()     {
+
+        global $db;
+
+        $sql_level_6 =    "SELECT * FROM `levels` WHERE level = '6'";
+
+
+        $stmt = $db->prepare( $sql_level_6 );
+
+        if ($stmt->execute()) {
+            $level_6 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_6;
+        }
+
+    }
+
+    public static function Level_7()     {
+
+        global $db;
+
+        $sql_level_7 =    "SELECT * FROM `levels` WHERE level = '7'";
+
+        $stmt = $db->prepare( $sql_level_7 );
+
+        if ($stmt->execute()) {
+            $level_7 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $level_7;
+        }
+
+    }
+
     public static function selectCurrentLevel($levelValue ,$subjectValue,)
     {
         global $db;

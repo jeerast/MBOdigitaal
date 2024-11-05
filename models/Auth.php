@@ -29,6 +29,48 @@ class Auth
         }
     }
 
+    public static function checkId()
+    {
+        if (isset($_COOKIE['token'])) {
+
+            $token = $_COOKIE['token'];
+            global $jwtkey;
+            $decoded = JWT::decode($token, new Key($jwtkey, 'HS256'));
+        
+            // get role name
+            $tokenRole = $decoded->data->id;
+            return $tokenRole;
+        }
+    }
+
+    public static function getIdName()
+    {
+        if (isset($_COOKIE['token'])) {
+
+            $token = $_COOKIE['token'];
+            global $jwtkey;
+            $decoded = JWT::decode($token, new Key($jwtkey, 'HS256'));
+        
+            // get role name
+            $tokenRole = $decoded->data->id;
+
+            global $db;
+
+            $sql_selectAll_levels = "SELECT firstName FROM user WHERE id= '$tokenRole';";
+
+            $stmt = $db->prepare($sql_selectAll_levels);
+    
+            if ($stmt->execute()) {
+                $userFirstName = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $userFirstName;
+    
+            }
+        }
+
+
+
+    }
+
     // login controleert de gebruikersnaam (emailadres) en het wachtwoord (secret)
     // die de gebruiker heeft ingevuld in het formulier.
     // login maakt ook een cookie aan. Cookie is 1 uur geldig.
