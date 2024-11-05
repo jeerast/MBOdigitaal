@@ -111,6 +111,7 @@ class Auth
                         'exp' => time() + 8 * 3600,
                         'data' => array(
                             'id' => $user['id'],
+                            'educationId' => $user['educationId'],
                             'roleName' => $role['name']
                         )
                     ),
@@ -209,6 +210,21 @@ class Auth
             
 
             return $decoded->data->id;
+        }
+    }
+
+    // Get [data] from the token Id, EducationId, Role
+    public static function getToken()
+    {
+        if (isset($_COOKIE['token'])) {
+
+            $token = $_COOKIE['token'];
+            global $jwtkey;
+            $decoded = JWT::decode($token, new Key($jwtkey, 'HS256'));
+
+            $decoded = json_decode(json_encode($decoded), true);
+
+            return $decoded;
         }
     }
 }
