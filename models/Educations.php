@@ -83,51 +83,44 @@ class Education
         
     }
 
-    // tttt
-    public static function selectAllElectivesResults($UserID)
+    public static function selectAllDeliverables($UserId)
         {
             global $db;
-            // global $education_id;
-
-            $sql_select_educations_by_id = "SELECT * FROM deliverables WHERE `id`=?;";
-            $stmt = $db->prepare($sql_select_educations_by_id);
+            $sql_selectAll_levels_from_user = "SELECT * FROM `deliverables` WHERE `id` = ?;";
+            $stmt = $db->prepare($sql_selectAll_levels_from_user);
 
             
-            if ($stmt->execute([$UserID])) {
-                $educations_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($stmt->execute([$UserId])) {
+                $levels = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                foreach ($educations_id as $education_id) {
-                    return $education_id;
+                foreach ($levels as $level) {
+                    return $level;
                 }
             }
             // return $education_id;
         }
     // gets all subjects for the selected education
-    public static function selectAllElectives($EducationID) {
+    public static function selectAllSubjects($EducationId) {
         global $db;
+        $sql_selectAll_subjects = "SELECT `name` FROM `subjects` WHERE `educationID` = ?;";
+        $stmt = $db->prepare($sql_selectAll_subjects);
 
-            // put the LIKE in a var in the request so its dynamic
-        $sql_selectAll_levels = "SELECT `subject` FROM `levels` WHERE `educationID` = '$EducationID' AND `level` = 1 ";
-        $stmt = $db->prepare($sql_selectAll_levels);
-
-        if ($stmt->execute()) {
-            $Electives = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $Electives;
+        if ($stmt->execute([$EducationId])) {
+            $Subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Subjects;
         }    
     }
 
     // Get all elctive information
-    public static function selectAllInfo($EducationID)
+    public static function selectAllLevels($EducationId)
     {
         global $db;
+        $sql_selectAll_levels = "SELECT * FROM `levels` WHERE `educationID` = ?;";
+        $stmt = $db->prepare($sql_selectAll_levels);
 
-        $sql_selectAll_educations = "SELECT * FROM levels WHERE `educationID` = '$EducationID';";
-
-        $stmt = $db->prepare($sql_selectAll_educations);
-
-        if ($stmt->execute()) {
-            $educations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $educations;
+        if ($stmt->execute([$EducationId])) {
+            $Levels = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Levels;
         }
     }
     // update werkt de informatie van een record van een bepaalde id bij.

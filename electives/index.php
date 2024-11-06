@@ -15,29 +15,20 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // heeft. De rollen "student" en "student" hebben toegang.
 // Voor nu geven we nog iedereen toegang.
 
-require_once __DOCUMENTROOT__ . '/models/Auth.php';
-Auth::check(["student","docent","administrator"]);
-
-$Token = Auth::getToken();
-
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van een link (GET).
 // Op dit moment hier niet van toepassing.
+require __DOCUMENTROOT__ . '/models/Auth.php';
+
 
 
 // 3. CONTROLLER FUNCTIES
 // Hier vinden alle acties plaats die moeten gebeuren om de juiste
 // informatie te bewerken.
 
-require __DOCUMENTROOT__ . '/models/Educations.php';
-// $EducationID = Education::getUserEducationID($Token);
-$Subjects = Education::selectAllSubjects($Token["data"]["educationId"]);
-$Levels = Education::selectAllLevels($Token["data"]["educationId"]);
-// fix DB for part bellow
-// $ElectivesResults = Education::selectAllElectivesResults($Token["data"]["id"]);
 
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
-$title = "Levels || " . $title;
-require __DOCUMENTROOT__ . '/views/levels/student.php';
+$title = "Electives || " . $title;
+require __DOCUMENTROOT__ . '/views/electives/electives.php';

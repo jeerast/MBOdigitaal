@@ -39,5 +39,5 @@ else {
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
-$title = "Pagina foutmelding";
+$title = "ERROR || " . $title;
 require __DOCUMENTROOT__ . '/views/errors/default.php';

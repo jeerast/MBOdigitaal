@@ -20,8 +20,7 @@ require __DOCUMENTROOT__ . '/errors/default.php';
 // n.v.t. 
 
 require __DOCUMENTROOT__ . '/models/Auth.php';
-$UserRole = Auth::checkRole();
-$user_id = Auth::getIdName();
+$Token = Auth::getToken();
 
 
 // 2. INPUT CONTROLEREN
@@ -38,7 +37,7 @@ $educations = Education::selectAll();
 // 4. VIEWS OPHALEN (REDIRECT)
 // De view voor de homepage wordt hier opgehaald.
 // Dit wordt de titel van de homepagina.
-$title = "Homepage MBOdigitaal";
+$title = "Home || " . $title;
 require __DOCUMENTROOT__ . '/views/home.php';
 
 /*

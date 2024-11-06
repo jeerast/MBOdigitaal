@@ -15,12 +15,15 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // heeft. De rollen "student" en "student" hebben toegang.
 // Voor nu geven we nog iedereen toegang.
 
+require __DOCUMENTROOT__ . '/models/Auth.php';
+Auth::check(["student"]);
+
+$Token = Auth::getToken();
+
+
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van een link (GET).
 // Op dit moment hier niet van toepassing.
-require __DOCUMENTROOT__ . '/models/Auth.php';
-$UserRole = Auth::checkRole();
-$user_id = Auth::getIdName();
 
 
 // 3. CONTROLLER FUNCTIES
@@ -28,8 +31,9 @@ $user_id = Auth::getIdName();
 // informatie te bewerken.
 
 
+
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
-$title = "Challenges keuzedelen";
-require __DOCUMENTROOT__ . '/views/keuzedelen/challenges.php';
+$title = "Overview || " . $title;
+require __DOCUMENTROOT__ . '/views/levels/overview.php';

@@ -7,12 +7,16 @@
 
 <body class="bg-stone-950">
     <!-- Modal -->
-    <div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-slate-300 bg-opacity-50 hidden">
+    <img src="/images/logo.png" width="800"  alt=   "Logo MBOdigitaal">
+
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
             <!-- Modal header -->
             <div class="flex justify-between items-center border-b pb-2">
                 <h3 class="text-xl font-semibold">Login</h3>
-                <button class="text-gray-500 hover:text-gray-700" onclick="toggleModal('loginModal')">&times;</button>
+                <a href="/">
+                <button class="text-gray-500 hover:text-gray-700">&times;</button>
+                </a>
             </div>
 
             <div class="m-2 font-bold text-red-400">
@@ -52,8 +56,9 @@
             </div>
         </div>
     </div>
+    
 
-    <?php require $_SERVER['DOCUMENT_ROOT'] . '/views/admin/templates/topbar.php' ?>
+
 
     <script>
         function toggleModal(modalID) {
@@ -67,5 +72,6 @@
     </script>
 
 </body>
+
 
 </html>

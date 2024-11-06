@@ -31,5 +31,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 // 4. VIEWS OPHALEN (REDIRECT)
 // Het view van het dashboard pagina wordt opgehaald.
-$title = "Inloggen op Adminpanel MBO Go Digital";
+$title = "Inloggen MBO Go Digital";
 require __DOCUMENTROOT__ . '/views/admin/auth/login.php';

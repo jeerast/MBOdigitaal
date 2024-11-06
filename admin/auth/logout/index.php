@@ -13,7 +13,7 @@ require __DOCUMENTROOT__ . '/errors/default.php';
 // Hier wordt gecontroleerd of de gebruiker is ingelogd en de juiste rechten
 // heeft. De rollen "applicatiebeheerder" en "administrator" hebben toegang.
 require __DOCUMENTROOT__ . '/models/Auth.php';
-Auth::check(["applicatiebeheerder", "administrator"]);
+// Auth::check(["applicatiebeheerder", "administrator"]);
 
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van form POST

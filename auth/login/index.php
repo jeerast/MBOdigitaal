@@ -44,23 +44,12 @@ $result = Auth::login(
     $secret
 );
 
-// $role = Auth::check(['Student']);
-
-
 if ($result) {
     $message = "U bent nu ingelogd met het emailadres $email.";
 } else {
     $message = "U bent niet ingelogd op het systeem. Probeer het nog eens.";
     callErrorPage($errorMessage);
 }
-
-// if ($role == 'Docent' || $role == 'Applicatiebeheerder' || $role == 'Administrator'){
-    
-
-// }  elseif ($role == 'Student') {
-
-// };
-
 
 // 4. VIEWS OPHALEN (REDIRECT)
 // Er wordt hier een redirect gedaan naar het overzicht van alle gebruikers.

@@ -2,11 +2,11 @@
 <html lang="nl">
 
 <head>
-    <?php require '../views/templates/head.php' ?>
+<?php require __DOCUMENTROOT__ . '/views/templates/head.php'; error_reporting(E_ERROR | E_PARSE); ?>
 </head>
 
 <body>
-<?php require '../views/templates/' . $UserRole . 'menu.php' ?>
+<?php require __DOCUMENTROOT__ . '/views/templates/menu/' . $Token["data"]["roleName"] .'.php'; error_reporting(E_ERROR | E_PARSE); ?>
 
     <div class="mt-6 mb-16 w-11/12 p-6 space-y-8 sm:p-8 bg-white mx-auto">
 
@@ -61,7 +61,7 @@
 
 
 
-        <?php require '../views/templates/footer.php' ?>
+        <?php require __DOCUMENTROOT__ . '/views/templates/footer.php' ?>
 
     </div>
 

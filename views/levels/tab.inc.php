@@ -1,6 +1,6 @@
 
 <div class="flex items-center justify-between">
-<h1 class="m-2 text-2xl leading-none text-gray-900 w-fit"><?php echo $ElectivesMenu[$i]["subject"] ?></h1>
+<h1 class="m-2 text-2xl leading-none text-gray-900 w-fit"><?php echo $Subject["name"] ?></h1>
 </div>
 <table class="table-auto w-full border-collapse border border-gray-400 mb-4 mt-4">
     <thead>
@@ -13,37 +13,39 @@
     </thead>
     <tbody>
     <?php
-        $level = 0;
-        foreach ($Electives as $Elective){            
-            if ($Elective["subject"] === $Selected){
-                $temp = $Elective["id"];
+    
+        $num = 1;
+        foreach ($Levels as $Level){   
+            if ($Level["subject"] === $Subject["name"]){
+
+
                 ?>
                 <tr>
-                <td class="border border-gray-300 px-4 py-2">
+                <td class="border border-gray-300 px-4 py-2 w-3">
                     <div class="flex items-center justify-center">
-                        <?php echo $level + 1 ?>
+                        <?php echo $num++ ?>
                     </div>
                 </td>
                 <td class="border border-gray-300 px-4 py-2">
                     <?php 
-                        echo $Elective["description"];
+                        echo $Level["description"];
                     ?>
                 </td>
                 <td class="border border-gray-300 px-4 py-2 w-3">
                     <div class="flex items-center justify-center">
                         <input type="checkbox" 
                         <?php 
-                        echo ($ElectivesResults['educationId'] == $temp) ? 'checked' : ''; // print id only when id == 1
+                        // echo ($LevelsResults['educationId'] == $Level["id"]) ? 'checked' : ''; // print id only when id == 1
                         ?>>
                     </div>
                 </td>
                 <td class="border border-gray-300 px-0 py-0 hover:bg-gray-100 w-3">
                 <button
                     class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
-                    onclick="openTab(event, '<?php echo $Elective['id'] ;?>')">Result</button>
+                    onclick="openTab(event, '<?php echo $Level['id'] ;?>')">Result</button>
                 </td>
                 </tr>
-                <?php $level++;
+                <?php
                 };
             }
         ?>
