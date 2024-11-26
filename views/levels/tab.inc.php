@@ -20,13 +20,10 @@
 
 
                 ?>
-<<<<<<< Updated upstream
                 <tr>
-                <td class="border border-gray-300 px-4 py-2 w-3">
-=======
                 <tr class="even:bg-slate-200 text-black odd:bg-slate-300 rounded-md">
                 <td class=" text-black px-4 py-2">
->>>>>>> Stashed changes
+
                     <div class="flex items-center justify-center">
                         <?php echo $num++ ?>
                     </div>
@@ -40,11 +37,8 @@
                     <div class="flex items-center justify-center">
                         <input type="checkbox" 
                         <?php 
-<<<<<<< Updated upstream
                         // echo ($LevelsResults['educationId'] == $Level["id"]) ? 'checked' : ''; // print id only when id == 1
-=======
                         // echo ($ElectivesResults['educationId'] == $temp) ? 'checked' : ''; // print id only when id == 1
->>>>>>> Stashed changes
                         ?>>
                     </div>
                 </td>
