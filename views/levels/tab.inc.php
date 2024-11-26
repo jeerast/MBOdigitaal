@@ -2,13 +2,13 @@
 <div class="flex items-center justify-between">
 <h1 class="m-2 text-2xl leading-none text-gray-900 w-fit"><?php echo $Subject["name"] ?></h1>
 </div>
-<table class="table-auto w-full border-collapse border border-gray-400 mb-4 mt-4">
+<table class="table-auto w-full border-collapse mb-4 mt-4">
     <thead>
         <tr>
-            <th class="border bg-gray-300 border-gray-300 px-4 py-2">Level</th>
-            <th class="border bg-gray-300 border-gray-300 px-4 py-2">Omschrijving</th>
-            <th class="border bg-gray-300 border-gray-300 px-4 py-2">Behaald</th>
-            <th class="border bg-gray-300 border-gray-300 px-4 py-2">Result</th>
+            <th class="rounded-l-lg text-white bg-blue-600 px-4 py-2">Level</th>
+            <th class="text-white bg-blue-600 px-4 py-2">Omschrijving</th>
+            <th class="text-white bg-blue-600 px-4 py-2">Behaald</th>
+            <th class="rounded-r-lg text-white bg-blue-600 px-4 py-2">Result</th>
         </tr>
     </thead>
     <tbody>
@@ -20,26 +20,35 @@
 
 
                 ?>
+<<<<<<< Updated upstream
                 <tr>
                 <td class="border border-gray-300 px-4 py-2 w-3">
+=======
+                <tr class="even:bg-slate-200 text-black odd:bg-slate-300 rounded-md">
+                <td class=" text-black px-4 py-2">
+>>>>>>> Stashed changes
                     <div class="flex items-center justify-center">
                         <?php echo $num++ ?>
                     </div>
                 </td>
-                <td class="border border-gray-300 px-4 py-2">
+                <td class="px-4 py-2">
                     <?php 
                         echo $Level["description"];
                     ?>
                 </td>
-                <td class="border border-gray-300 px-4 py-2 w-3">
+                <td class="px-4 py-2 w-3">
                     <div class="flex items-center justify-center">
                         <input type="checkbox" 
                         <?php 
+<<<<<<< Updated upstream
                         // echo ($LevelsResults['educationId'] == $Level["id"]) ? 'checked' : ''; // print id only when id == 1
+=======
+                        // echo ($ElectivesResults['educationId'] == $temp) ? 'checked' : ''; // print id only when id == 1
+>>>>>>> Stashed changes
                         ?>>
                     </div>
                 </td>
-                <td class="border border-gray-300 px-0 py-0 hover:bg-gray-100 w-3">
+                <td class="px-0 py-0 hover:bg-gray-100 w-3">
                 <button
                     class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
                     onclick="openTab(event, '<?php echo $Level['id'] ;?>')">Result</button>

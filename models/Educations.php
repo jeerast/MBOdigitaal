@@ -86,8 +86,15 @@ class Education
     public static function selectAllDeliverables($UserId)
         {
             global $db;
+<<<<<<< Updated upstream
             $sql_selectAll_levels_from_user = "SELECT * FROM `deliverables` WHERE `id` = ?;";
             $stmt = $db->prepare($sql_selectAll_levels_from_user);
+=======
+            // global $education_id;
+
+            $sql_select_educations_by_id = "SELECT education.* FROM user JOIN education ON user.educationId = education.id WHERE user.id =?;";
+            $stmt = $db->prepare($sql_select_educations_by_id);
+>>>>>>> Stashed changes
 
             
             if ($stmt->execute([$UserId])) {
@@ -105,9 +112,18 @@ class Education
         $sql_selectAll_subjects = "SELECT `name` FROM `subjects` WHERE `educationID` = ?;";
         $stmt = $db->prepare($sql_selectAll_subjects);
 
+<<<<<<< Updated upstream
         if ($stmt->execute([$EducationId])) {
             $Subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $Subjects;
+            // put the LIKE in a var in the request so its dynamic
+        $sql_selectAll_levels = "SELECT `subject` FROM `levels` WHERE `educationid` = '$EducationID' AND `level` = 1 ";
+        $stmt = $db->prepare($sql_selectAll_levels);
+
+        if ($stmt->execute()) {
+            $Electives = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Electives;
+>>>>>>> Stashed changes
         }    
     }
 
@@ -118,9 +134,19 @@ class Education
         $sql_selectAll_levels = "SELECT * FROM `levels` WHERE `educationID` = ?;";
         $stmt = $db->prepare($sql_selectAll_levels);
 
+<<<<<<< Updated upstream
         if ($stmt->execute([$EducationId])) {
             $Levels = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $Levels;
+=======
+        $sql_selectAll_educations = "SELECT * FROM levels WHERE `educationid` = '$EducationID';";
+
+        $stmt = $db->prepare($sql_selectAll_educations);
+
+        if ($stmt->execute()) {
+            $educations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $educations;
+>>>>>>> Stashed changes
         }
     }
     // update werkt de informatie van een record van een bepaalde id bij.
