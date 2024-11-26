@@ -20,10 +20,8 @@
 
 
                 ?>
-                <tr>
                 <tr class="even:bg-slate-200 text-black odd:bg-slate-300 rounded-md">
                 <td class=" text-black px-4 py-2">
-
                     <div class="flex items-center justify-center">
                         <?php echo $num++ ?>
                     </div>
