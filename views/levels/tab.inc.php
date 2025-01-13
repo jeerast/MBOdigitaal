@@ -43,9 +43,60 @@
                 <td class="px-0 py-0 hover:bg-gray-100 w-3">
                 <button
                     class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
-                    onclick="openTab(event, '<?php echo $Level['id'] ;?>')">Result</button>
+                    onclick="openResult(event, '<?php echo $Level['id'] ;?>')">Result</button>
                 </td>
                 </tr>
+                <!-- RESULT -->
+                 <!-- Student -->
+                    <tr id="result0<?php echo $Level['id'] ;?>" class="border-solid border-2 border-sky-500 rounded-md result hidden">
+                    <td class=" text-black px-4 py-2">
+                        <div class="flex items-center justify-center">
+                            Student
+                        </div>
+                    </td>
+                    <td class="px-4 py-2">
+                        <div contenteditable="true">
+                            <?php
+                            foreach ($Results as $Result){
+                                if ($Level["id"] === $Result["educationId"]){echo $Result["student"];}
+                                
+                            }
+                            ?>
+                            </div>
+                    </td>
+                    <td class="px-4 py-2 w-3">
+                        <div class="flex items-center justify-center">
+                        </div>
+                    </td>
+                    <td class="px-0 py-0 hover:bg-gray-100 w-3">
+                    <button
+                        class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
+                        onclick="openResult(event, '<?php echo $Level['id'] ;?>')">SAVE</button>
+                    </td>
+                    </tr>
+                    <!-- Teacher -->
+                    <tr id="result1<?php echo $Level['id'] ;?>" class="border-solid border-2 border-sky-500 rounded-md result hidden">
+                    <td class=" text-black px-4 py-2">
+                        <div class="flex items-center justify-center">
+                            Teacher
+                        </div>
+                    </td>
+                    <td class="px-4 py-2">
+                    <div>
+                            <?php
+                            foreach ($Results as $Result){
+                                if ($Level["id"] === $Result["educationId"]){echo $Result["docent"];}
+                                
+                            }
+                            ?>
+                            </div>                    </td>
+                    <td class="px-4 py-2 w-3">
+                        <div class="flex items-center justify-center">
+                        </div>
+                    </td>
+                    <td class="px-0 py-0 w-3">
+                    </td>
+                    </tr>
                 <?php
                 };
             }

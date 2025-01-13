@@ -34,8 +34,8 @@
             }
             ?>
         </div>
-       
-        <h1 class="m-2 text-2xl leading-none text-gray-900 w-fit">Results</h1>
+       <!--  -->
+        <!-- <h1 class="m-2 text-2xl leading-none text-gray-900 w-fit">Results</h1>
         <table class="table-auto w-full border-collapse border border-gray-400 mb-4 mt-4">
             <thead>
                 <tr>
@@ -70,7 +70,10 @@
                 </td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+        <!--  -->
+        <!-- <?php print_r($Results); ?>  -->
+
         <script>
             function openTab(evt, tabName) {
                 var i, tabcontent, tablinks;
@@ -85,6 +88,15 @@
                 document.getElementById("tab" + tabName).classList.remove("hidden");
                 document.getElementById("button" + tabName).classList.add("bg-gray-200");
 
+            }
+            function openResult(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("result");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].classList.add("hidden");
+                }
+                document.getElementById("result0" + tabName).classList.remove("hidden");
+                document.getElementById("result1" + tabName).classList.remove("hidden");
             }
             window.addEventListener('load', (event) => { document.getElementById("tab0").classList.remove("hidden"); document.getElementById("button0").classList.add("bg-gray-200"); });
         </script>

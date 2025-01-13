@@ -123,6 +123,18 @@ class Education
             return $Levels;
         }
     }
+    // Get all results for all electives from a specified user
+    public static function selectAllResultsFromUser($UserId)
+    {
+        global $db;
+        $sql_selectAll_results_from_user = "SELECT * FROM `deliverables` WHERE `userId` = ?;";
+        $stmt = $db->prepare($sql_selectAll_results_from_user);
+
+        if ($stmt->execute([$UserId])) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+    }
     // update werkt de informatie van een record van een bepaalde id bij.
     // De functie returneerd true als dit gelukt is en false als het niet
     // gelukt is.

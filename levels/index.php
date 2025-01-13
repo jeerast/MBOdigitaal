@@ -33,6 +33,8 @@ require __DOCUMENTROOT__ . '/models/Educations.php';
 // $EducationID = Education::getUserEducationID($Token);
 $Subjects = Education::selectAllSubjects($Token["data"]["educationId"]);
 $Levels = Education::selectAllLevels($Token["data"]["educationId"]);
+$Results = Education::selectAllResultsFromUser($Token["data"]["id"]);
+
 // fix DB for part bellow
 // $ElectivesResults = Education::selectAllElectivesResults($Token["data"]["id"]);
 
