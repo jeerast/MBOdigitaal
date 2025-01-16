@@ -33,7 +33,7 @@
                 </td>
                 <td class="px-4 py-2 w-3">
                     <div class="flex items-center justify-center">
-                        <input type="checkbox" 
+                        <input disabled="<?php $Level["description"] == "1" ? "disabled" : "enabled"; ?>" type="checkbox" 
                         <?php 
                         // echo ($LevelsResults['educationId'] == $Level["id"]) ? 'checked' : ''; // print id only when id == 1
                         // echo ($ElectivesResults['educationId'] == $temp) ? 'checked' : ''; // print id only when id == 1
@@ -43,74 +43,12 @@
                 <td class="px-0 py-0 hover:bg-gray-100 w-3">
                 <button
                     class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
-                    onclick="openResult(event, '<?php echo $Level['id'] ;?>')">Result</button>
+                    onclick="openResult(event, '<?php echo $Level['id'] ;?>')">EDIT</button>
                 </td>
                 </tr>
-                <!-- RESULT -->
-                 <!-- Student -->
-                    <tr id="result0<?php echo $Level['id'] ;?>" class="border-solid border-2 border-sky-500 rounded-md result hidden">
-                    <td class=" text-black px-4 py-2">
-                        <div class="flex items-center justify-center">
-                            Student
-                        </div>
-                    </td>
-                    <td class="px-4 py-2">
-                        <div contenteditable="true">
-                            <?php
-                            foreach ($Results as $Result){
-                                if ($Level["id"] === $Result["educationId"]){echo $Result["student"];}
-                                
-                            }
-                            ?>
-                            </div>
-                    </td>
-                    <td class="px-4 py-2 w-3">
-                        <div class="flex items-center justify-center">
-                        </div>
-                    </td>
-                    <td class="px-0 py-0 hover:bg-gray-100 w-3">
-                    <button
-                        class="w-1/2 text-center font-medium text-gray-700 focus:outline-none w-full"
-                        onclick="openResult(event, '<?php echo $Level['id'] ;?>')">SAVE</button>
-                    </td>
-                    </tr>
-                    <!-- Teacher -->
-                    <tr id="result1<?php echo $Level['id'] ;?>" class="border-solid border-2 border-sky-500 rounded-md result hidden">
-                    <td class=" text-black px-4 py-2">
-                        <div class="flex items-center justify-center">
-                            Teacher
-                        </div>
-                    </td>
-                    <td class="px-4 py-2">
-                    <div>
-                            <?php
-                            foreach ($Results as $Result){
-                                if ($Level["id"] === $Result["educationId"]){echo $Result["docent"];}
-                                
-                            }
-                            ?>
-                            </div>                    </td>
-                    <td class="px-4 py-2 w-3">
-                        <div class="flex items-center justify-center">
-                        </div>
-                    </td>
-                    <td class="px-0 py-0 w-3">
-                    </td>
-                    </tr>
                 <?php
                 };
             }
         ?>
     </tbody>
 </table>
-    <div class=" items-center justify-between">
-        <form method="GET" action="/admin/auth/login" class="max-w-sm float-right">
-            <div class="flex items-center py-2">
-                <button
-                    class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 border-4 text-lg text-white py-1 px-6 rounded"
-                    type="submit">
-                    SAVE
-                </button>
-            </div>
-        </form>
-    </div>

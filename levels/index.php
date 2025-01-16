@@ -20,6 +20,32 @@ Auth::check(["student","docent","administrator"]);
 
 $Token = Auth::getToken();
 
+
+$conn = mysqli_connect("localhost", "root", "", "mbogodigital");
+  
+if (isset($_REQUEST['DeliverableStudent'])){
+    // Check connection
+if($conn === false){
+    die("ERROR: Could not connect. " 
+        . mysqli_connect_error());
+}
+$first_name =  $_REQUEST['DeliverableStudent'];
+$Tkn = $Token["data"]["id"];
+// $sql = "UPDATE deliverables SET student = `test` WHERE userId = $Tkn";
+// $sql = "UPDATE deliverables SET verified=0 WHERE userId='56c9fd91-6c99-4915-85cc-30ea9e5dd956';";
+$sql = "UPDATE deliverables SET student='$first_name' WHERE userId='$Tkn';";
+
+if(mysqli_query($conn, $sql)){
+    echo "<h3>data stored in a database successfully." 
+        . " Please browse your localhost php my admin" 
+        . " to view the updated data</h3>"; 
+} else{
+    echo "ERROR: Hush! Sorry $sql. " 
+        . mysqli_error($conn);
+}
+}
+
+
 // 2. INPUT CONTROLEREN
 // Controleren of de pagina is aangeroepen met behulp van een link (GET).
 // Op dit moment hier niet van toepassing.
@@ -35,6 +61,10 @@ $Subjects = Education::selectAllSubjects($Token["data"]["educationId"]);
 $Levels = Education::selectAllLevels($Token["data"]["educationId"]);
 $Results = Education::selectAllResultsFromUser($Token["data"]["id"]);
 
+
+// Close connection
+mysqli_close($conn);
+// mysqli_query($conn, $sql);
 // fix DB for part bellow
 // $ElectivesResults = Education::selectAllElectivesResults($Token["data"]["id"]);
 
