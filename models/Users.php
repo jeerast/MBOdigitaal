@@ -370,4 +370,19 @@ class Users
             return true;            // Email is wel uniek.
         }
     }
+
+    public static function selectAllStudenten()
+    {
+        global $db;
+
+        $sql_select_users_by_roleid = "SELECT * FROM `user` WHERE `roleid` = '6e27105c-c42a-46c8-9cd6-34ff1fe52572';";
+
+        $stmt = $db->prepare($sql_select_users_by_roleid);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $Studenten = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Studenten;
+        }
+    }
 }
