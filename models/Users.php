@@ -375,7 +375,7 @@ class Users
     {
         global $db;
 
-        $sql_select_users_by_roleid = "SELECT * FROM `user` WHERE `roleid` = '6e27105c-c42a-46c8-9cd6-34ff1fe52572';";
+        $sql_select_users_by_roleid = "SELECT DISTINCT u.*, sv.voortgang, g.klas FROM `user` u RIGHT JOIN studenten_voortgang sv ON u.id = sv.student_id LEFT JOIN groeps g ON u.id = g.user_id WHERE u.roleid = '6e27105c-c42a-46c8-9cd6-34ff1fe52572';;";
 
         $stmt = $db->prepare($sql_select_users_by_roleid);
         $stmt->execute();
@@ -385,4 +385,21 @@ class Users
             return $Studenten;
         }
     }
+
+    public static function selectAllStudentenMetLevel()
+    {
+        global $db;
+
+        $sql_select_users_by_roleid = "SELECT DISTINCT u.*, sv.voortgang, g.klas FROM `user` u RIGHT JOIN studenten_voortgang sv ON u.id = sv.student_id LEFT JOIN groeps g ON u.id = g.user_id WHERE u.roleid = '6e27105c-c42a-46c8-9cd6-34ff1fe52572';";
+
+        $stmt = $db->prepare($sql_select_users_by_roleid);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $Studenten = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $Studenten;
+        }
+    }
+
 }
+

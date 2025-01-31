@@ -30,11 +30,12 @@ $Token = Auth::getToken();
 // informatie te bewerken.
 
 require_once __DOCUMENTROOT__ . '/models/Users.php';
-$Studenten = Users::selectAllStudenten();
+$Studenten = Users::selectAllStudentenMetLevel();
 
 
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.
 // $title is de titel van de html pagina.
+$newUrl = "/levels/overview/index.php";
 $title = "Studenten || " . $title;
 require __DOCUMENTROOT__ . '/views/teacher/studentOverview.php';

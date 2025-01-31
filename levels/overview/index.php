@@ -16,7 +16,7 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 // Voor nu geven we nog iedereen toegang.
 
 require __DOCUMENTROOT__ . '/models/Auth.php';
-Auth::check(["student"]);
+Auth::check(["student","Docent"]);
 
 $Token = Auth::getToken();
 
