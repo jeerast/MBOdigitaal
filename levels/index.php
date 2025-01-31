@@ -17,9 +17,6 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 
 require_once __DOCUMENTROOT__ . '/models/Auth.php';
 Auth::check(["student","docent","administrator"]);
-
-// 
-// GET / POST VARS
 $Token = Auth::getToken();
 
 // add connection
@@ -37,7 +34,8 @@ $EduId = $_REQUEST['educationId'];
 $Tkn = $Token["data"]["id"];
 
 // add an if to see if a user is logged in + if it matches the id of the user that is trying to post
-$sql = "UPDATE deliverables SET student='$EduMessage' WHERE educationId='$EduId';";
+// create update query
+$sql = "UPDATE deliverables SET student='$EduMessage' WHERE educationId='$EduId' AND userId='$Tkn';";
 
 // send var to DB
 if(mysqli_query($conn, $sql)){

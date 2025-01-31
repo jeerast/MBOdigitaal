@@ -82,7 +82,8 @@ class Education
         }
         
     }
-
+// get all deliverables from a userId
+// return deliverables from student
     public static function selectAllDeliverables($UserId)
         {
             global $db;
@@ -99,7 +100,8 @@ class Education
             }
             // return $education_id;
         }
-    // gets all subjects for the selected education
+    // gets all subjects for the selected education using userId
+    // return all subjects from student
     public static function selectAllSubjects($EducationId) {
         global $db;
         $sql_selectAll_subjects = "SELECT `name` FROM `subjects` WHERE `educationID` = ?;";
@@ -111,7 +113,8 @@ class Education
         }    
     }
 
-    // Get all elctive information
+    // Get all elctive information using userId
+    // retund all levels from user
     public static function selectAllLevels($EducationId)
     {
         global $db;
@@ -123,7 +126,8 @@ class Education
             return $Levels;
         }
     }
-    // Get all results for all electives from a specified user
+    // Get all results for all electives from a specified user using userId
+    // return all results from user (levels)
     public static function selectAllResultsFromUser($UserId)
     {
         global $db;
@@ -137,6 +141,7 @@ class Education
     }
 
     // TEST
+    // IGNORE THIS / DELETE THIS
     public static function test($UserId, $EducationId)
     {
         global $db;
@@ -203,4 +208,38 @@ class Education
         }
     }
 
+    public static function setupLevels(
+        $educationId,
+        $userId,
+        $student,
+        $docent,
+        $completed,
+        $verified
+    ) {
+        global $db;
+
+        $sql_insert_into_education = "INSERT INTO deliverables (educationId, userId, student, docent, completed, verified)
+        VALUES (?, ?, ?, ?, ?, ?);";
+
+        $stmt = $db->prepare($sql_insert_into_education);
+
+        if (
+            $stmt->execute([
+                $educationId,
+                $userId,
+                $student,
+                $docent,
+                $completed,
+                $verified
+            ])
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
+
+
+// 

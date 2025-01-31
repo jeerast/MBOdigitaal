@@ -158,6 +158,7 @@ class Auth
     }
 
     // Get [data] from the token Id, EducationId, Role
+    // Changed to also return user education
     public static function getToken()
     {
         if (isset($_COOKIE['token'])) {

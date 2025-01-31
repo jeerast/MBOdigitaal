@@ -39,7 +39,7 @@
             foreach ($Results as $Result){
                 ?>
                     <form action="">
-                        <div class="hidden absolute center inset-0 p-16 bg-black bg-opacity-30	" id="RESULT_<?php echo $Result["educationId"];?>">
+                        <div class="hidden absolute center inset-0 p-16 bg-black bg-opacity-30 RESULT_" id="RESULT_<?php echo $Result["educationId"];?>">
                         <h1 class="m-2 text-2xl leading-none text-gray-900 w-fit">Results</h1>
                         <table class="table-auto w-full border-collapse border border-gray-400 mb-4 mt-4">
                         <tbody>
@@ -102,13 +102,17 @@
                 }
                 document.getElementById("RESULT_" + tabName).classList.remove("hidden");
             }            
+            document.onkeydown = function(evt) {
+                evt = evt || window.event;
+                if (evt.keyCode == 27) {
+                    closeResult();
+                }
+            };
             function closeResult(evt, tabName) {
-                var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("RESULT_");
-                // for (i = 0; i < tabcontent.length; i++) {
-                //     tabcontent[i].classList.add("hidden");
-                // }
-                document.getElementById("RESULT_" + tabName).classList.add("hidden");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].classList.add("hidden");
+                }
             }
             window.addEventListener('load', (event) => { document.getElementById("tab0").classList.remove("hidden"); document.getElementById("button0").classList.add("bg-gray-200"); });
         </script>
