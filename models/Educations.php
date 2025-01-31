@@ -135,6 +135,20 @@ class Education
             return $results;
         }
     }
+
+    // TEST
+    public static function test($UserId, $EducationId)
+    {
+        global $db;
+        $sql_selectAll_results_from_user = "SELECT * FROM `deliverables` WHERE `userId` = ?; UNION SELECT * FROM `levels` WHERE `educationID` = ?;";
+        $stmt = $db->prepare($sql_selectAll_results_from_user);
+
+        if ($stmt->execute([$UserId, $EducationId])) {
+            $test = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $test;
+        }
+    }
+    // TEST
     // update werkt de informatie van een record van een bepaalde id bij.
     // De functie returneerd true als dit gelukt is en false als het niet
     // gelukt is.

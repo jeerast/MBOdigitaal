@@ -23,7 +23,7 @@
                 <tr class="even:bg-slate-200 text-black odd:bg-slate-300 rounded-md">
                 <td class=" text-black px-4 py-2">
                     <div class="flex items-center justify-center">
-                        <?php echo $num++ ?>
+                        <?php echo $num + 1 ?>
                     </div>
                 </td>
                 <td class="px-4 py-2">
@@ -33,10 +33,14 @@
                 </td>
                 <td class="px-4 py-2 w-3">
                     <div class="flex items-center justify-center">
-                        <input disabled="<?php $Level["description"] == "1" ? "disabled" : "enabled"; ?>" type="checkbox" 
-                        <?php 
-                        // echo ($LevelsResults['educationId'] == $Level["id"]) ? 'checked' : ''; // print id only when id == 1
-                        // echo ($ElectivesResults['educationId'] == $temp) ? 'checked' : ''; // print id only when id == 1
+                        <input disabled type="checkbox"
+                        <?php
+                            foreach ($Results as $Result){
+                                echo $Result;
+                                if ($Result == $Level["subject"]){
+                                    echo "Checked";
+                                }
+                            };
                         ?>>
                     </div>
                 </td>
@@ -46,6 +50,7 @@
                     onclick="openResult(event, '<?php echo $Level['id'] ;?>')">EDIT</button>
                 </td>
                 </tr>
+   
                 <?php
                 };
             }
