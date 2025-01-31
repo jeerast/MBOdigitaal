@@ -18,9 +18,11 @@ require_once __DOCUMENTROOT__ . '/errors/default.php';
 require_once __DOCUMENTROOT__ . '/models/Auth.php';
 Auth::check(["student","docent","administrator"]);
 
+// 
+// GET / POST VARS
 $Token = Auth::getToken();
 
-
+// add connection
 $conn = mysqli_connect("localhost", "root", "", "mbogodigital");
   
 if (isset($_REQUEST['DeliverableStudent'])){
@@ -29,19 +31,19 @@ if($conn === false){
     die("ERROR: Could not connect. " 
         . mysqli_connect_error());
 }
-$first_name =  $_REQUEST['DeliverableStudent'];
+// post request from form
+$EduMessage = $_REQUEST['DeliverableStudent'];
+$EduId = $_REQUEST['educationId'];
 $Tkn = $Token["data"]["id"];
-// $sql = "UPDATE deliverables SET student = `test` WHERE userId = $Tkn";
-// $sql = "UPDATE deliverables SET verified=0 WHERE userId='56c9fd91-6c99-4915-85cc-30ea9e5dd956';";
-$sql = "UPDATE deliverables SET student='$first_name' WHERE userId='$Tkn';";
 
+// add an if to see if a user is logged in + if it matches the id of the user that is trying to post
+$sql = "UPDATE deliverables SET student='$EduMessage' WHERE educationId='$EduId';";
+
+// send var to DB
 if(mysqli_query($conn, $sql)){
-    echo "<h3>data stored in a database successfully." 
-        . " Please browse your localhost php my admin" 
-        . " to view the updated data</h3>"; 
+    // success
 } else{
-    echo "ERROR: Hush! Sorry $sql. " 
-        . mysqli_error($conn);
+    // failed
 }
 }
 
@@ -56,17 +58,16 @@ if(mysqli_query($conn, $sql)){
 // informatie te bewerken.
 
 require __DOCUMENTROOT__ . '/models/Educations.php';
-// $EducationID = Education::getUserEducationID($Token);
 $Subjects = Education::selectAllSubjects($Token["data"]["educationId"]);
 $Levels = Education::selectAllLevels($Token["data"]["educationId"]);
 $Results = Education::selectAllResultsFromUser($Token["data"]["id"]);
+
+// $test = Education::test($Token["data"]["id"],$Token["data"]["educationId"]);
 
 
 // Close connection
 mysqli_close($conn);
 // mysqli_query($conn, $sql);
-// fix DB for part bellow
-// $ElectivesResults = Education::selectAllElectivesResults($Token["data"]["id"]);
 
 // 4. VIEWS OPHALEN
 // De HTML-pagina (view) wordt hier opgehaald.

@@ -7,7 +7,7 @@
 
 <body>
     <?php require __DOCUMENTROOT__ . '/views/templates/menu/' . $Token["data"]["roleName"] .'.php'; error_reporting(E_ERROR | E_PARSE); ?>
-
+    <?php print_r($test) ?>
     <div class="mt-6 mb-16 w-11/12 p-6 space-y-8 sm:p-8 bg-white mx-auto">
         <h2 class="text-2xl font-bold dark:text-black">Levels - Student</h2>
         <div class="w-full">
@@ -46,7 +46,7 @@
                             <th class="border bg-gray-300 border-gray-300 px-4 py-2">Docent</th>
                             <tr>
                                 <td class="border border-gray-300">
-                                    <textarea class="w-full h-full" rows="8" cols="50"><?php echo $Result["docent"];?></textarea>
+                                    <div class="w-full h-full bg-white" rows="8" cols="50"><?php echo $Result["docent"];?></div>
                                 </td>
                             </tr>
                         </tbody>
@@ -58,6 +58,7 @@
                                 </td>
                             </tr>
                         </tbody>
+                        <input type="hidden" name="educationId" id="educationId" value="<?php echo $Result["educationId"];?>"/>
                         </table>
                         <div class="flex items-center py-2">
                             <button
@@ -65,13 +66,14 @@
                                 type="submit">
                                 SAVE
                             </button>
-                            <button
+                            <button type="button" onclick="closeResult(event, '<?php echo $Result['educationId'] ;?>')"
                                 class="flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 border-4 text-lg text-white py-1 px-6 rounded">
                                 CANCEL
                             </button>
                         </div>
                         </div>
                     </form>
+
                 <?php
             }
             
@@ -99,6 +101,14 @@
                     tabcontent[i].classList.add("hidden");
                 }
                 document.getElementById("RESULT_" + tabName).classList.remove("hidden");
+            }            
+            function closeResult(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("RESULT_");
+                // for (i = 0; i < tabcontent.length; i++) {
+                //     tabcontent[i].classList.add("hidden");
+                // }
+                document.getElementById("RESULT_" + tabName).classList.add("hidden");
             }
             window.addEventListener('load', (event) => { document.getElementById("tab0").classList.remove("hidden"); document.getElementById("button0").classList.add("bg-gray-200"); });
         </script>
